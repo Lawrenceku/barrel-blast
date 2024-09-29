@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/upbeat-emotive-186467.mp3-0c06c820b48f8c649b2198b4d89a19ab.mp3str"
+
+[deps]
+
+source_file="res://ASSETS/sound/upbeat-emotive-186467.mp3"
+dest_files=[ "res://.import/upbeat-emotive-186467.mp3-0c06c820b48f8c649b2198b4d89a19ab.mp3str" ]
+
+[params]
+
+loop=true
+loop_offset=0

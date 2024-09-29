@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/crickets.mp3-539ebb7dc286294afaaf79bf48f04bd6.mp3str"
+
+[deps]
+
+source_file="res://SFX/crickets.mp3"
+dest_files=[ "res://.import/crickets.mp3-539ebb7dc286294afaaf79bf48f04bd6.mp3str" ]
+
+[params]
+
+loop=true
+loop_offset=0

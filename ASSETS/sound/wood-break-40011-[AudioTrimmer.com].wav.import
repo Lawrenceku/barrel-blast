@@ -1,0 +1,23 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/wood-break-40011-[AudioTrimmer.com].wav-f0fada00064357eee70b02fbcccab6f8.sample"
+
+[deps]
+
+source_file="res://ASSETS/sound/wood-break-40011-[AudioTrimmer.com].wav"
+dest_files=[ "res://.import/wood-break-40011-[AudioTrimmer.com].wav-f0fada00064357eee70b02fbcccab6f8.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=0

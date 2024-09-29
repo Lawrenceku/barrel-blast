@@ -1,0 +1,44 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://SCENES/ricochet platform/triangle.tscn" type="PackedScene" id=1]
+[ext_resource path="res://SCENES/cannon/cannon.tscn" type="PackedScene" id=2]
+[ext_resource path="res://SCENES/obstacles/square-obstacle.tscn" type="PackedScene" id=3]
+
+[node name="preset_1" type="Node2D"]
+
+[node name="rectangular_obstacle" parent="." instance=ExtResource( 3 )]
+position = Vector2( 336, 364 )
+is_moving = false
+
+[node name="rectangular_obstacle6" parent="." instance=ExtResource( 3 )]
+position = Vector2( 212, 564 )
+is_moving = false
+
+[node name="rectangular_obstacle8" parent="." instance=ExtResource( 3 )]
+position = Vector2( 92, 764 )
+is_moving = false
+
+[node name="rectangular_obstacle2" parent="." instance=ExtResource( 3 )]
+position = Vector2( 509, 545 )
+is_moving = false
+
+[node name="rectangular_obstacle3" parent="." instance=ExtResource( 3 )]
+position = Vector2( 277, 937 )
+is_moving = false
+
+[node name="rectangular_obstacle5" parent="." instance=ExtResource( 3 )]
+position = Vector2( 377, 745 )
+is_moving = false
+
+[node name="cannon3" parent="." instance=ExtResource( 2 )]
+position = Vector2( 230, 159 )
+
+[node name="cannon2" parent="." instance=ExtResource( 2 )]
+position = Vector2( 360, 1195 )
+max_speed = 200
+move_range = 300
+is_moving = true
+
+[node name="triangle" parent="." instance=ExtResource( 1 )]
+position = Vector2( 706, 295 )
+rotation = -1.18682

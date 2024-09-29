@@ -1,0 +1,187 @@
+[gd_scene load_steps=15 format=2]
+
+[ext_resource path="res://ASSETS/themes/normalButton.tres" type="Theme" id=1]
+[ext_resource path="res://SCENES/menus/gameover/gameover.gd" type="Script" id=2]
+[ext_resource path="res://ASSETS/fonts/Montserrat-Bold.ttf" type="DynamicFontData" id=3]
+[ext_resource path="res://ASSETS/fonts/Montserrat-ExtraBoldItalic.ttf" type="DynamicFontData" id=4]
+[ext_resource path="res://ASSETS/sound/game-over-39-199830.wav" type="AudioStream" id=5]
+[ext_resource path="res://SCENES/menus/gameover/ColorRect.gd" type="Script" id=6]
+
+[sub_resource type="Animation" id=4]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath("CanvasLayer/ColorRect:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Color( 0, 0, 0, 0 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("CanvasLayer/Panel:rect_position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 20, 418 ) ]
+}
+
+[sub_resource type="Animation" id=5]
+resource_name = "gameover"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/path = NodePath("CanvasLayer/ColorRect:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.5 ),
+"transitions": PoolRealArray( 2.37841, 1 ),
+"update": 0,
+"values": [ Color( 0, 0, 0, 0 ), Color( 0, 0, 0, 0.313726 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("CanvasLayer/Panel:rect_position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.4, 0.5 ),
+"transitions": PoolRealArray( 4.92457, 2.73208, 0.5 ),
+"update": 0,
+"values": [ Vector2( 20, 350 ), Vector2( 20, 430 ), Vector2( 20, 418 ) ]
+}
+
+[sub_resource type="Shader" id=9]
+code = "shader_type canvas_item;
+
+uniform float blur_amount : hint_range(0, 5);
+uniform float transition_time : hint_range(0, 0.5);
+
+void fragment() {
+    vec4 color = textureLod(SCREEN_TEXTURE, SCREEN_UV, blur_amount);
+    float avg = (color.r + color.g + color.b) / 3.0;
+    float t = clamp(transition_time/0.5, 0.0, 1.0);
+    COLOR = vec4(mix(color.rgb, vec3(avg), t), color.a);
+}"
+
+[sub_resource type="ShaderMaterial" id=10]
+shader = SubResource( 9 )
+shader_param/blur_amount = null
+shader_param/transition_time = null
+
+[sub_resource type="Shader" id=3]
+code = "shader_type canvas_item;
+
+uniform vec2 slant_amount = vec2(0.1, 0.0); // Adjust the slant of the shape
+
+void vertex() {
+    // Slant the vertices of the rectangle
+    // This affects the top-left and top-right (for horizontal slant) or bottom corners (for vertical slant)
+    if (VERTEX.y < 0.0) { // Top vertices
+        VERTEX.x += slant_amount.x * abs(VERTEX.y);
+    } else { // Bottom vertices
+        VERTEX.x -= slant_amount.y * abs(VERTEX.y);
+    }
+}
+"
+
+[sub_resource type="ShaderMaterial" id=6]
+shader = SubResource( 3 )
+shader_param/slant_amount = Vector2( 0.1, 0 )
+
+[sub_resource type="DynamicFont" id=7]
+size = 50
+font_data = ExtResource( 4 )
+
+[sub_resource type="DynamicFont" id=8]
+size = 30
+font_data = ExtResource( 3 )
+
+[node name="control" type="Control"]
+pause_mode = 2
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource( 2 )
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+pause_mode = 2
+anims/RESET = SubResource( 4 )
+anims/gameover = SubResource( 5 )
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+pause_mode = 2
+
+[node name="ColorRect" type="ColorRect" parent="CanvasLayer"]
+material = SubResource( 10 )
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_top = -2.0
+margin_bottom = -2.0
+color = Color( 0, 0, 0, 0 )
+script = ExtResource( 6 )
+
+[node name="Panel" type="Panel" parent="CanvasLayer"]
+material = SubResource( 6 )
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = 20.0
+margin_top = 418.0
+margin_right = 704.0
+margin_bottom = 632.0
+
+[node name="Label" type="Label" parent="CanvasLayer/Panel"]
+anchor_right = 1.0
+margin_top = -52.0
+margin_bottom = 62.0
+custom_fonts/font = SubResource( 7 )
+text = "GAME OVER"
+align = 1
+valign = 1
+
+[node name="replay" type="Button" parent="CanvasLayer/Panel"]
+pause_mode = 2
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -183.0
+margin_top = -37.0
+margin_right = -37.0
+margin_bottom = 37.0
+theme = ExtResource( 1 )
+custom_fonts/font = SubResource( 8 )
+text = "Replay"
+
+[node name="back" type="Button" parent="CanvasLayer/Panel"]
+pause_mode = 2
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = 38.0
+margin_top = -37.0
+margin_right = 156.0
+margin_bottom = 37.0
+theme = ExtResource( 1 )
+custom_fonts/font = SubResource( 8 )
+text = "Quit"
+
+[node name="gameover" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 5 )
+autoplay = true
+
+[connection signal="pressed" from="CanvasLayer/Panel/replay" to="." method="_on_replay_pressed"]
+[connection signal="pressed" from="CanvasLayer/Panel/back" to="." method="_on_back_pressed"]

@@ -1,0 +1,39 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://SCENES/obstacles/square-obstacle.gd" type="Script" id=1]
+
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 43.25, 40.875 )
+
+[sub_resource type="CircleShape2D" id=2]
+radius = 53.2353
+
+[node name="rectangular_obstacle" type="KinematicBody2D"]
+position = Vector2( 304, 487 )
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_group_": true
+}
+rotation_speed = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+visible = false
+shape = SubResource( 1 )
+disabled = true
+
+[node name="Polygon2D" type="Polygon2D" parent="."]
+modulate = Color( 0.988235, 0.27451, 0.27451, 1 )
+position = Vector2( 50.7749, 17 )
+scale = Vector2( 1.11451, 1.32787 )
+polygon = PoolVector2Array( -76.744, -44.4321, -68.0231, -57.2345, -62.7905, -45.1851, -49.7092, -57.2345, -45.3487, -45.1851, -30.5232, -59.4938, -24.4185, -45.1851, -7, -43, 3.79099, -32.3827, -11.4623, -24.0987, 5.58549, -11.2963, -10.5651, -4.51852, 6.48275, 9.79011, -15.9486, 12.8025, -20.4349, 28.6173, -36.5854, 13.5555, -41.9689, 27.8642, -57.2222, 15.0617, -66.1948, 27.8642, -72, 16, -72, 5, -15.9486, 2.25926, -15, -34, -72, -34, -70.681, 3.76543, -73, 16, -86.8316, 28.6173, -81.4481, 6.02468, -100.29, 2.25926, -85.0371, -11.2963, -98.4959, -16.5679, -85.0371, -23.3457, -96.7014, -35.395, -86.337, -43.679, -88.9532, -53.4691 )
+
+[node name="Area2D" type="Area2D" parent="."]
+collision_layer = 16
+collision_mask = 16
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2( -1, -2 )
+shape = SubResource( 2 )
+__meta__ = {
+"_edit_group_": true
+}

@@ -1,0 +1,102 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://Scripts/ScrollContainer.gd" type="Script" id=5]
+[ext_resource path="res://ASSETS/floor.PNG" type="Texture" id=6]
+
+[sub_resource type="CubeMesh" id=1]
+
+[node name="ScrollContainer" type="ScrollContainer"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 348.0
+margin_top = 176.0
+margin_right = 321.0
+margin_bottom = 377.0
+rect_scale = Vector2( 0.3, 0.3 )
+rect_clip_content = false
+mouse_filter = 1
+scroll_vertical_enabled = false
+script = ExtResource( 5 )
+scroll_duration = 0.3
+
+[node name="CenterContainer" type="CenterContainer" parent="."]
+margin_right = 6184.0
+margin_bottom = 1269.0
+mouse_filter = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="MarginContainer" type="MarginContainer" parent="CenterContainer"]
+margin_top = 548.0
+margin_right = 6184.0
+margin_bottom = 721.0
+mouse_filter = 2
+custom_constants/margin_right = 1920
+custom_constants/margin_left = 1920
+
+[node name="HBoxContainer" type="HBoxContainer" parent="CenterContainer/MarginContainer"]
+margin_left = 1920.0
+margin_right = 4264.0
+margin_bottom = 173.0
+mouse_filter = 2
+custom_constants/separation = 100
+
+[node name="CardMenu1" type="TextureRect" parent="CenterContainer/MarginContainer/HBoxContainer"]
+margin_right = 511.0
+margin_bottom = 173.0
+rect_pivot_offset = Vector2( -4960, 3833.33 )
+texture = ExtResource( 6 )
+
+[node name="CardMenu2" type="TextureRect" parent="CenterContainer/MarginContainer/HBoxContainer"]
+margin_left = 611.0
+margin_right = 1122.0
+margin_bottom = 173.0
+texture = ExtResource( 6 )
+
+[node name="MeshInstane2D" type="MeshInstance2D" parent="CenterContainer/MarginContainer/HBoxContainer/CardMenu2"]
+modulate = Color( 0, 0, 0, 0.470588 )
+position = Vector2( 255.152, 255.5 )
+scale = Vector2( 256.182, 256.5 )
+mesh = SubResource( 1 )
+
+[node name="81E263C61483C7287Efa7B487C5087Ec" type="Sprite" parent="CenterContainer/MarginContainer/HBoxContainer/CardMenu2"]
+position = Vector2( 258, 255.333 )
+scale = Vector2( 0.3, 0.3 )
+texture = ExtResource( 6 )
+
+[node name="CardMenu3" type="TextureRect" parent="CenterContainer/MarginContainer/HBoxContainer"]
+margin_left = 1222.0
+margin_right = 1733.0
+margin_bottom = 173.0
+rect_pivot_offset = Vector2( -5080.67, 652 )
+texture = ExtResource( 6 )
+
+[node name="MeshInstance2D" type="MeshInstance2D" parent="CenterContainer/MarginContainer/HBoxContainer/CardMenu3"]
+modulate = Color( 0, 0, 0, 0.470588 )
+position = Vector2( 255.152, 255.5 )
+scale = Vector2( 256.182, 256.5 )
+mesh = SubResource( 1 )
+
+[node name="81E263C61483C7287Efa7B487C5087Ec" type="Sprite" parent="CenterContainer/MarginContainer/HBoxContainer/CardMenu3"]
+position = Vector2( 282.667, 255.333 )
+scale = Vector2( 0.3, 0.3 )
+texture = ExtResource( 6 )
+
+[node name="CardMenu4" type="TextureRect" parent="CenterContainer/MarginContainer/HBoxContainer"]
+margin_left = 1833.0
+margin_right = 2344.0
+margin_bottom = 173.0
+texture = ExtResource( 6 )
+
+[node name="hs" type="MeshInstance2D" parent="CenterContainer/MarginContainer/HBoxContainer/CardMenu4"]
+modulate = Color( 0, 0, 0, 0.470588 )
+position = Vector2( 255.152, 255.5 )
+scale = Vector2( 256.182, 256.5 )
+mesh = SubResource( 1 )
+
+[node name="81E263C61483C7287Efa7B487C5087Ec" type="Sprite" parent="CenterContainer/MarginContainer/HBoxContainer/CardMenu4"]
+position = Vector2( 257.334, 258.667 )
+scale = Vector2( 0.3, 0.3 )
+texture = ExtResource( 6 )
+
+[connection signal="gui_input" from="." to="." method="_on_ScrollContainer_gui_input"]

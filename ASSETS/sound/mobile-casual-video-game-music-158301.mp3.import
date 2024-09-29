@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/mobile-casual-video-game-music-158301.mp3-7f7d65f8c8066bd5005e8aea59f3ee2a.mp3str"
+
+[deps]
+
+source_file="res://ASSETS/sound/mobile-casual-video-game-music-158301.mp3"
+dest_files=[ "res://.import/mobile-casual-video-game-music-158301.mp3-7f7d65f8c8066bd5005e8aea59f3ee2a.mp3str" ]
+
+[params]
+
+loop=true
+loop_offset=0

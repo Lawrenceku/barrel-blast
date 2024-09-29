@@ -1,0 +1,4 @@
+#Thu Feb 08 07:19:51 WAT 2024
+base.0=C\:\\Users\\ANAN SECRETARIAT\\Documents\\2D_Assessment\\android\\build\\build\\intermediates\\dex\\release\\mergeDexRelease\\classes.dex
+path.0=classes.dex
+renamed.0=classes.dex

@@ -1,0 +1,38 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://SCENES/cannon/cannon.gd" type="Script" id=1]
+
+[sub_resource type="SphereMesh" id=1]
+
+[sub_resource type="CircleShape2D" id=3]
+radius = 69.1158
+
+[node name="cannon" type="KinematicBody2D"]
+rotation = 1.94255
+script = ExtResource( 1 )
+
+[node name="MeshInstance2D" type="MeshInstance2D" parent="."]
+scale = Vector2( 50, 50 )
+mesh = SubResource( 1 )
+
+[node name="CannonArea" type="Area2D" parent="."]
+collision_layer = 8
+collision_mask = 8
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CannonArea"]
+shape = SubResource( 3 )
+
+[node name="Polygon2D" type="Polygon2D" parent="."]
+position = Vector2( 6, 0 )
+scale = Vector2( 1.45946, 0.535946 )
+polygon = PoolVector2Array( -18.2778, -225.769, -31.9815, -5.59758, 20.0926, -9.3293, 5.01852, -225.769 )
+
+[node name="Tween" type="Tween" parent="."]
+
+[node name="VisibilityNotifier2D" type="VisibilityNotifier2D" parent="."]
+position = Vector2( 3.76008, 6.18907 )
+scale = Vector2( 2.19678, 3.09076 )
+
+[connection signal="area_entered" from="CannonArea" to="." method="_on_CannonArea_area_entered"]
+[connection signal="area_exited" from="CannonArea" to="." method="_on_CannonArea_area_exited"]
+[connection signal="screen_entered" from="VisibilityNotifier2D" to="." method="_on_VisibilityNotifier2D_screen_entered"]
